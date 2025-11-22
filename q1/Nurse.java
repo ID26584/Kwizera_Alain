@@ -1,0 +1,37 @@
+package Alain_26584.q1;
+
+import com.hospital.management.Doctor;
+import com.hospital.management.HospitalDataException;
+
+//Nurse Class
+class Nurse extends Doctor {
+private String nurseName;
+private String shift;
+private int yearsOfExperience;
+
+public Nurse(int id, String createdDate, String updatedDate, String hospitalName,
+           String address, String phoneNumber, String email, String departmentName,
+           String departmentCode, String doctorName, String specialization,
+           String doctorEmail, String phone, String nurseName, String shift, 
+           int yearsOfExperience) throws HospitalDataException {
+   super(id, createdDate, updatedDate, hospitalName, address, phoneNumber, email, 
+         departmentName, departmentCode, doctorName, specialization, doctorEmail, phone);
+   
+   if (!shift.equals("Day") && !shift.equals("Night")) throw new HospitalDataException("Shift must be Day or Night");
+   if (yearsOfExperience < 0) throw new HospitalDataException("Years of experience cannot be negative");
+   
+   this.nurseName = nurseName;
+   this.shift = shift;
+   this.yearsOfExperience = yearsOfExperience;
+}
+
+public String getNurseName() { return nurseName; }
+public String getShift() { return shift; }
+public int getYearsOfExperience() { return yearsOfExperience; }
+
+@Override
+public String toString() {
+   return super.toString() + ", Nurse: " + nurseName + ", Shift: " + shift + 
+          ", Experience: " + yearsOfExperience + " years";
+}
+}
